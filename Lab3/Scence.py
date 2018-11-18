@@ -74,7 +74,8 @@ def draw_earth(x, y, window, scale = None, cont_points = None):
             point_counter += 1
             point = (random.uniform(x - radius + radius/2.5 + (points[-1][0] - (x - radius + radius/2.5)), x + radius - radius/2.5), random.uniform(y - radius + radius/2.5 + (points[-1][1] - (y - radius + radius/2.5)), y + radius - radius/2.5))
             points.append(point)
-            print(points[-1], point_counter)
+            print(x)
+            print(points[-1])
         while point_counter < round(cont_points_1*2/4):
             point_counter +=1
             point = (random.uniform(x - radius + radius/2.5 + (points[-1][0] - (x - radius + radius/2.5)), x + radius - radius/2.5), random.uniform(y - radius + radius/2.5, y + radius - radius/2.5 - ((y + radius - radius/2.5) - points[-1][1])))

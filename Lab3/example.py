@@ -100,3 +100,4 @@ draw_angry_lecturer()
 window.getMouse()
 
 window.close()
+
