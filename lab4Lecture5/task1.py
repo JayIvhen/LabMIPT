@@ -1,12 +1,12 @@
 import graphics as gr
 
-SIZE_X = 400
-SIZE_Y = 400
-START_X = 100
-START_Y = 200
+SIZE_X = 800
+SIZE_Y = 800
+START_X = 400
+START_Y = 700
 BACK_COLOR = "Green"
-START_VELOCITY = gr.Point(1, -5)
-START_ACCELERATION = gr.Point(0, 0.1)
+START_VELOCITY = gr.Point(2, 0)
+START_ACCELERATION = gr.Point(0, 0)
 DELAY = 0.02
 RADIUS = 10
 
@@ -36,10 +36,17 @@ def create_background(size_y, size_x, background_color):
     return background
 
 
-def check_collision(velocity, coords, radius, SIZE_X, SIZE_Y):
-    if coords.x > SIZE_X or coords.x < 0:
+def check_collision(velocity, ball, radius, SIZE_X, SIZE_Y):
+    if ball.getCenter().x > SIZE_X - radius:
         velocity.x = -velocity.x
-    if coords.y > SIZE_Y or coords.y < 0:
+
+    if ball.getCenter().x < 0 + radius:
+        velocity.x = -velocity.x
+
+    if ball.getCenter().y > SIZE_Y - radius:
+        velocity.y = -velocity.y
+
+    if ball.getCenter().y < 0 + radius:
         velocity.y = -velocity.y
 
 
@@ -53,13 +60,23 @@ ball_1 = create_circle(coords, RADIUS)
 back = create_background(SIZE_X, SIZE_Y, BACK_COLOR)
 back.draw(window)
 ball_1.draw(window)
-
+y = 0
+flag = True
 
 while True:
-    #acceleration = change_for_plantes(coords, center)
+
+    acceleration = change_for_plantes(ball_1.getCenter(), center)
     velocity = change(velocity, acceleration)
     ball_1.move(velocity.x, velocity.y)
-    check_collision(velocity, ball_1.p1, RADIUS, SIZE_X, SIZE_Y)
+    check_collision(velocity, ball_1, RADIUS, SIZE_X, SIZE_Y)
+
+    if y < ball_1.getCenter().y and flag:
+        print(ball_1.getCenter().y)
+        flag = False
+    if y > ball_1.getCenter().y:
+        flag = True
+    y = ball_1.getCenter().y
+
     gr.time.sleep(DELAY)
 
 window.getMouse()
