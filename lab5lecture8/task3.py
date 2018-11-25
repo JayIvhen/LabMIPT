@@ -17,6 +17,6 @@ def draw_koch(l, n):
     draw_koch(l / 3, n - 1)
 
 
-
-T.speed(0)
-draw_koch(300, 5)
+if __name__ == "__main__":
+    T.speed(0)
+    draw_koch(300, 1)
