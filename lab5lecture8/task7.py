@@ -5,8 +5,8 @@ dragon curve
 import turtle as T
 import math
 
-LENGTH = 300
-N = 10
+LENGTH = 599
+N = 15
 
 
 def dragon_curve(len_, n):
@@ -14,6 +14,7 @@ def dragon_curve(len_, n):
 
 
 def draw_right(len_, n):
+    T.pencolor("red")
     if n == 0:
         T.forward(len_)
         print(n)
@@ -26,6 +27,7 @@ def draw_right(len_, n):
 
 
 def draw_left(len_, n):
+    T.pencolor("black")
     if n == 0:
         T.forward(len_)
         print(1, n)
